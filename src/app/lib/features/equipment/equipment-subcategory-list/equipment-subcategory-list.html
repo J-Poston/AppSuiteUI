@@ -1,0 +1,11 @@
+<p>equipment-subcategory-list works!</p>
+
+@if(subcategories().length === 0){
+    <p>No subcategories found.</p>
+}
+
+<ul>
+    @for(subcat of subcategories(); track subcat.subcategoryId){
+        <li>{{subcat.subcategoryName}}</li>
+    }
+</ul>

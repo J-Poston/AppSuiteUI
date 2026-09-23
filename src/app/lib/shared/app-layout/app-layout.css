@@ -1,0 +1,292 @@
+/* ==========================================
+   GLOBAL ERP STRUCTURAL CANVAS
+   ========================================== */
+.erp-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ==========================================
+   TOP SYSTEM HEADER BANNER
+   ========================================== */
+.erp-header {
+  height: 50px;
+  background-color: #0f172a; /* Slate 900 - Industrial Dark */
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid #334155;
+  z-index: 100;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Waffle Icon Button Styling */
+.waffle-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.waffle-btn:hover {
+  background-color: #1e293b;
+  color: #f8fafc;
+}
+
+.portal-brand {
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: #cbd5e1;
+}
+
+.portal-brand strong {
+  color: #3b82f6; /* Blue Accent for active app */
+}
+
+/* ==========================================
+   MAIN SYSTEM CORE BODY
+   ========================================== */
+.erp-body {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ==========================================
+   DYNAMIC LEFT-HAND NAVIGATION SIDEBAR
+   ========================================== */
+.erp-sidebar {
+  width: 260px;
+  background-color: #f8fafc; /* Slate 50 - Very clean subtle background */
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  padding-top: 40px; /* Space for the collapse toggle */
+}
+
+/* Collapse Toggle Button Overlay */
+.collapse-toggle-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #64748b;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.collapse-toggle-btn:hover {
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+/* Sidebar Navigation Items list formatting */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 8px;
+  overflow-y: auto;
+}
+
+.menu-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  color: #475569;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.nav-item:hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+/* Navigation Icon alignments */
+.icon-left {
+  font-size: 20px;
+  margin-right: 12px;
+  color: #64748b;
+}
+
+.nav-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arrow-right {
+  font-size: 18px;
+  color: #94a3b8;
+}
+
+/* Child Tree Accordion Drawer Container */
+.child-links-container {
+  padding-left: 20px;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  border-left: 2px solid #e2e8f0;
+  margin-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.child-node {
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Active Navigation Node highlights */
+.nav-item.active {
+  background-color: #e0f2fe; /* Sky blue subtle hue */
+  color: #0369a1;
+}
+.nav-item.active .icon-left {
+  color: #0284c7;
+}
+
+/* Collapsed Sidebar Structural Modifier Layouts */
+.collapsed-sidebar .erp-sidebar {
+  width: 60px;
+  padding-top: 40px;
+}
+
+.collapsed-sidebar .nav-label,
+.collapsed-sidebar .arrow-right,
+.collapsed-sidebar .child-links-container {
+  display: none !important;
+}
+
+.collapsed-sidebar .nav-item {
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.collapsed-sidebar .icon-left {
+  margin-right: 0;
+}
+
+/* ==========================================
+   CENTRAL VIEWPORT WORKSPACE
+   ========================================== */
+.erp-content-viewport {
+  flex: 1;
+  background-color: #ffffff;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* ==========================================
+   WAFFLE OVERLAY DIALOG POPUP MODAL
+   ========================================== */
+.waffle-overlay-backdrop {
+  position: fixed;
+  top: 50px; left: 0; right: 0; bottom: 0;
+  background-color: rgba(15, 23, 42, 0.3); 
+  backdrop-filter: blur(2px);
+  z-index: 99;
+}
+
+.waffle-grid-modal {
+  background: #ffffff;
+  width: 380px;
+  padding: 20px;
+  margin: 8px 0 0 12px;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.waffle-grid-modal h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.app-card {
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.app-card:hover {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+.app-card.active-app {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+.app-card .large-icon {
+  font-size: 32px;
+  color: #475569;
+}
+
+.app-card.active-app .large-icon {
+  color: #2563eb;
+}
+
+.app-card-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}

@@ -1,0 +1,11 @@
+<p>equipment-category-list works!</p>
+
+@if(categories().length === 0){
+    <p>No Categories found.</p>
+}
+
+<ul>
+    @for(category of categories(); track category.categoryId){
+        <li>{{category.categoryName}}</li>
+    }
+</ul>

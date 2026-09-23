@@ -1,0 +1,11 @@
+<p>manufacturer-list works!</p>
+
+@if(mfrs().length === 0){
+    <p>No manufacturers found.</p>
+}
+
+<ul>
+    @for(mfr of mfrs(); track mfr.makeId){
+        <li>{{ mfr.makeName }}</li>
+    }
+</ul>

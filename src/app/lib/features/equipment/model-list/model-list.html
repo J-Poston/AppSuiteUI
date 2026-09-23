@@ -1,0 +1,14 @@
+<p>model-list works!</p>
+
+@if(models().length ===0){
+    <p>No models found.</p>
+}
+
+<ul>
+    
+    @for(model of models(); track model.modelId){
+        <li>
+            {{ model.modelNum }}
+        </li>
+    }
+</ul>

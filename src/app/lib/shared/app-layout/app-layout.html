@@ -1,0 +1,94 @@
+<div class="erp-container">
+  
+  <!-- TOP HEADER BAR -->
+  <header class="erp-header">
+    <div class="header-left">
+      <!-- THE WAFFLE ICON BUTTON -->
+      <button class="waffle-btn" (click)="toggleWaffle()">
+        <span class="material-symbols-rounded">apps</span>
+      </button>
+      <span class="portal-brand">
+        ERP System  <strong>{{ getCurrentApp()?.name }}</strong>
+      </span>
+    </div>
+  </header>
+
+  <!-- MAIN VIEWPORT CONTAINER -->
+  <div class="erp-body" [class.collapsed-sidebar]="isSidebarCollapsed()">
+    
+    <!-- LEFT SIDEBAR NAVIGATION PANEL -->
+    <aside class="erp-sidebar">
+      <button class="collapse-toggle-btn" (click)="toggleSidebar()">
+        <span class="material-symbols-rounded">
+          {{ isSidebarCollapsed() ? 'chevron_right' : 'chevron_left' }}
+        </span>
+      </button>
+
+      <nav class="sidebar-nav">
+
+        @for (node of getCurrentApp()?.menuTree; track node.title) {
+          <div class="menu-group">
+            
+
+            @if (node.children && node.children.length > 0) {
+              <div class="nav-item parent-node" (click)="toggleParentNode(node)">
+                <span class="material-symbols-rounded icon-left">{{ node.icon || 'folder' }}</span>
+                <span class="nav-label">{{ node.title }}</span>
+                <span class="material-symbols-rounded arrow-right">
+                  {{ node.isExpanded ? 'expand_more' : 'chevron_right' }}
+                </span>
+              </div>
+              
+
+              @if (node.isExpanded && !isSidebarCollapsed()) {
+                <div class="child-links-container">
+                  @for (child of node.children; track child.title) {
+                    <a [routerLink]="child.route" routerLinkActive="active" class="nav-item child-node">
+                      <span class="nav-label">{{ child.title }}</span>
+                    </a>
+                  }
+                </div>
+              }
+            } 
+            
+
+            @else {
+              <a [routerLink]="node.route" routerLinkActive="active" class="nav-item standalone-node">
+                <span class="material-symbols-rounded icon-left">{{ node.icon || 'link' }}</span>
+                <span class="nav-label">{{ node.title }}</span>
+              </a>
+            }
+
+          </div>
+        }
+      </nav>
+    </aside>
+
+
+    <main class="erp-content-viewport">
+      <ng-content></ng-content>
+    </main>
+
+  </div>
+
+  <!-- WAFFLE GRID OVERLAY MODAL -->
+  @if (isWaffleOpen()) {
+    <div class="waffle-overlay-backdrop" (click)="toggleWaffle()">
+      <div class="waffle-grid-modal" (click)="$event.stopPropagation()">
+        <h3>Select Application</h3>
+        <div class="grid-layout">
+          @for (app of appModules(); track app.id) {
+            <button 
+              class="app-card" 
+              [class.active-app]="app.id === currentModuleId()" 
+              (click)="handleAppSwitch(app)">
+              <span class="material-symbols-rounded large-icon">{{ app.icon }}</span>
+              <span class="app-card-title">{{ app.name }}</span>
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+  }
+
+</div>

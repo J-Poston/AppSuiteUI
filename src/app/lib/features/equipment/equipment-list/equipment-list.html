@@ -1,0 +1,15 @@
+<p>equipment-list works!</p>
+
+@if(equipment().length ===0){
+    <p>No Equipment found.</p>
+}
+
+<ul>
+    @for(equip of equipment(); track equip.equipmentId){
+        <li>
+            <a routerLink="{{equip.equipmentId}}">
+                {{equip.manufacturerName}} {{equip.modelNumber}}, S/N {{equip.serialNumber}}
+            </a>
+        </li>
+    }
+</ul>
