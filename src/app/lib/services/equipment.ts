@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Equipment, EquipCategory, EquipManufacturer, EquipModel, EquipSubcategory } from '../models/equipment.model';
+import { Equipment, EquipCategory, EquipManufacturer, EquipModel, EquipSubcategory, AddUpdateModelDto } from '../models/equipment.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { Observable } from 'rxjs';
@@ -54,6 +54,14 @@ export class EquipmentService {
 
   getEquipmentById(equipId:number): Observable<Equipment>{
     return this.http.get<Equipment>(`${this.baseUrl}/GetEquipmentById?id=${equipId}`)
+  }
+
+  addUpdateEquipment(equip:Equipment){
+    return this.http.post<Equipment>(`${this.baseUrl}/AddUpdateEquipment`,equip);
+  }
+
+  addUpdateModel(model:AddUpdateModelDto){
+    return this.http.post<AddUpdateModelDto>(`${this.baseUrl}/AddUpdateModel`,model);
   }
 
 }

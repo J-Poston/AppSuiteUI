@@ -14,3 +14,15 @@
   direction: ltr;
   -webkit-font-smoothing: antialiased;
 }
+
+.app-form-grp {
+    padding: 5px;
+}
+
+.app-form-label{
+    padding: 5px;
+}
+
+.app-form-ctrl {
+    padding: 5px;
+}

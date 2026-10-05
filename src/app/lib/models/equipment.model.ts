@@ -2,7 +2,7 @@ export interface Equipment {
     equipmentId?: number,
     manufacturerId: number,
     manufacturerName: string,
-    modelId: number,
+    modelId?: number,
     modelNumber: string,
     description: string,
     categoryId: number,
@@ -14,17 +14,31 @@ export interface Equipment {
 }
 
 export interface EquipModel {
-    modelId?: number,
+    modelId: number,
     modelNum: string,
     modelDescription: string,
-    makeId?: number,
-    make: string,
-    categoryId?: number,
-    categoryName?: string,
-    subcategoryId?: number,
-    subcategoryName?: string,
-    lotTracked?: boolean,
-    serialized?: boolean
+    makeId: number,
+    makeName: string,
+    categoryId: number,
+    categoryName: string,
+    subcategoryId: number,
+    subcategoryName: string,
+    lotTracked: boolean,
+    serialized: boolean
+}
+
+export interface AddUpdateModelDto {
+    modelId: number,
+    modelNumber: string,
+    modelDescription: string,
+    manufacturerId: number,
+    manufacturerName: string,
+    categoryId: number,
+    categoryName: string,
+    subcategoryId: number,
+    subcategoryName: string,
+    lotTracked: boolean,
+    serialized: boolean
 }
 
 export interface EquipManufacturer{
