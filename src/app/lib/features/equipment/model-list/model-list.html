@@ -8,7 +8,7 @@
     
     @for(model of models(); track model.modelId){
         <li>
-            {{ model.modelNum }}
+            <a routerLink="{{model.modelId}}">{{ model.modelNum }}</a> 
         </li>
     }
 </ul>

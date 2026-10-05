@@ -1,5 +1,60 @@
 <p>model-details works!</p>
 
-<router-outlet>
-    
-</router-outlet>
+<form [formGroup]="modelForm" (ngSubmit)="onSubmit()">
+
+    <div class="app-form-grp">
+        <label class="app-form-label" for="modelId">Model Id:</label>
+        <input class="app-form-ctrl" type="text" id="modelId" formControlName="modelId">
+    </div>
+
+    <div class="app-form-grp">
+        <label for="modelNumber" class="app-form-label">Model Number:</label>
+        <input type="text" formControlName="modelNumber" class="app-form-ctrl">
+    </div>
+
+    <div class="app-form-grp">
+        <label for="manufacturerId" class="app-form-label">Manufacturer:</label>
+        <select type="text" class="app-form-ctrl" id="manufacturerId" formControlName="manufacturerId">
+            @for(mfr of manufacturers(); track mfr.makeId){
+                <option value="{{mfr.makeId}}">{{mfr.makeName}}</option>
+            }
+        </select>
+    </div>
+
+    <div class="app-form-grp">
+        <label for="modelDescription" class="app-form-label">Description:</label>
+        <input type="text" class="app-form-ctrl" formControlName="modelDescription" id="modelDescription">
+    </div>
+
+    <div class="app-form-grp">
+        <label for="categoryId" class="app-form-label">Category</label>
+        <select type="text" class="app-form-ctrl" id="categoryId" formControlName="categoryId">
+            @for(cat of categories(); track cat.categoryId){
+                <option value="{{cat.categoryId}}">{{cat.categoryName}}</option>
+            }
+        </select>
+    </div>
+
+    <div class="app-form-grp">
+        <label for="subcategoryId" class="app-form-label">Subcategory</label>
+        <select type="text" class="app-form-ctrl" id="subcategoryId" formControlName="subcategoryId">
+            @for(subcat of subcategories(); track subcat.subcategoryId){
+                <option value="{{subcat.subcategoryId}}">{{subcat.subcategoryName}}</option>
+            }
+        </select>
+    </div>
+
+    <div class="app-form-grp">
+        <label for="lotTracked" class="app-form-label">Lot Tracked: </label>
+        <input type="checkbox" class="app-form-ctrl" id="lotTracked" formControlName="lotTracked">
+    </div>
+
+    <div class="app-form-grp">
+        <label for="serialized" class="app-form-label">Serialized:</label>
+        <input type="checkbox" class="app-form-ctrl" formControlName="serialized" id="serialized">
+    </div>
+
+
+    <button type="submit" (onClick)="onClick()" class="app-form-ctrl">Save</button>
+
+</form>

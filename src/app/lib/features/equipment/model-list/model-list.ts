@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { EquipModel } from '../../../models/equipment.model';
 import { signal } from '@angular/core';
 import { EquipmentService } from '../../../services/equipment';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'appsuite-model-list',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './model-list.html',
   styleUrl: './model-list.css',
 })

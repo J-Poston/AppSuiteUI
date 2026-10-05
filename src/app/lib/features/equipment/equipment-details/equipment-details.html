@@ -1,6 +1,70 @@
 <p>equipment-details works!</p>
 
+    <form [formGroup]="equipmentForm" (ngSubmit)="onSubmit()">
+        <div class="app-form-grp">
+            <label for="equipmentId" class="app-form-label">EquipmentId: </label>
+            <input id="equipmentId" type="text" formControlName="equipmentId"
+            class="app-form-ctrl"/>
+        </div>
 
-    <p>Equipment Id: {{equipment()?.equipmentId}}</p>
-    <p>Manufacturer: {{equipment()?.manufacturerName}}</p>
-    <p>Model Number: {{equipment()?.modelNumber}}</p>
+        <div class="app-form-grp">
+            <label for="manufacturerId" class="app-form-label">Manufacturer: </label>
+            <select id="manufacturerId" type="text" formControlName="manufacturerId"
+            class="app-form-ctrl">
+                @for(mfr of manufacturers(); track mfr.makeId){
+                    <option value="{{mfr.makeId}}">{{mfr.makeName}}</option>
+                }
+            </select>
+        </div>
+        
+        <div class="app-form-grp">
+            <label for="modelId" class="app-form-label">Model Number: </label>
+            <select id="modelId" type="text" formControlName="modelId"
+            class="app-form-ctrl">
+                @for(model of models(); track model.modelId){
+                    <option value="{{model.modelId}}">{{model.modelNum}}</option>
+                }
+            </select>
+        </div>
+
+        <div class="app-form-grp">
+            <label for="description" class="app-form-label">Description: </label>
+            <input id="description" type="text" formControlName="description"
+            class="app-form-ctrl"/>
+        </div>
+    
+        <div class="app-form-grp">
+            <label for="categoryId" class="app-form-label">Category: </label>
+            <select id="categoryId" formControlName="categoryId"
+            class="app-form-ctrl">
+                @for(category of categories(); track category.categoryId){
+                    <option value="{{category.categoryId}}">{{category.categoryName}}</option>
+                }
+            </select>
+        </div>    
+        
+        <div class="app-form-grp">
+            <label for="subcategoryId" class="app-form-label">Subcategory: </label>
+            <select id="subcategoryId" formControlName="subcategoryId"
+            class="app-form-ctrl">
+                @for(subcat of subcategories(); track subcat.subcategoryId){
+                    <option value="{{subcat.subcategoryId}}">{{subcat.subcategoryName}}</option>
+                }
+            </select>
+        </div>    
+        
+        <div class="app-form-grp">
+            <label for="serialNumber" class="app-form-label">Serial Number: </label>
+            <input id="serialNumber" type="text" formControlName="serialNumber"
+            class="app-form-ctrl">
+        </div>    
+        
+        <div class="app-form-grp">
+            <label for="lotNumber" class="app-form-label">Lot Number: </label>
+            <input id="lotNumber" type="text" formControlName="lotNumber"
+            class="app-form-ctrl">
+        </div>
+
+        <button type="submit" (click)="onClick()" [disabled]="!equipmentForm.valid">Save</button>
+
+    </form>
